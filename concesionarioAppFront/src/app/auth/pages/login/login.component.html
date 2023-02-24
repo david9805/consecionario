@@ -1,0 +1,49 @@
+<h2>Login</h2>
+
+<div class="row">
+    <div class="col">
+        <form (ngSubmit)="login()" #miFormulario="ngForm" autocomplete="off">
+            <div class="mb-3 row">                
+                <div class="col-sm-9">
+                    <hr>
+                    <label class="col-sm-3 col-form-label">Email</label>
+                    <input type="text"
+                           class="form-control"
+                           ngModel
+                           placeholder="Digite el correo"
+                           name="email"
+                           [(ngModel)]="user.email"
+                           >
+                    
+                </div>
+            </div>
+            <div class="mb-3 row">
+                
+                <div class="col-sm-9">
+                    <label class="col-sm-3 col-form-label">Contraseña</label>
+                    <input type="password"
+                           class="form-control"
+                           ngModel
+                           name="password"
+                           placeholder="Digite la Contraseña"
+                           [(ngModel)]="user.password">
+                </div>
+                
+            </div>
+            <div class="mb-3 row">
+                <div class="col-sm-9">                    
+                    <button mat-raised-button color="accent" type="submit" class="float-end">Inicio Sesión</button>
+                    <a mat-button color="warn"  class="float-end" routerLink="../register">Registrarse</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">Cargando...</p>
+</ngx-spinner>

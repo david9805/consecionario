@@ -1,0 +1,82 @@
+<h2>Registrar</h2>
+<hr>
+<div class="row">
+    <div class="col">
+        <form (ngSubmit)="guardar()" #miFormulario="ngForm" autocomplete="off">
+           <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Nombre</label>
+                <div class="col-sm-9">
+                    <input type="text"
+                           class="form-control"
+                           ngModel
+                           name="name"
+                           placeholder="Digite el nombre"
+                           required
+                           [(ngModel)]="user.name"
+                           >
+                    <span class="form-text text-danger" *ngIf="nombreValido()">Debe Digitar un nombre</span>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Email</label>
+                <div class="col-sm-9">
+                    <input type="text"
+                           class="form-control"
+                           ngModel
+                           placeholder="Digite el correo"
+                           required
+                           name="email"
+                           [(ngModel)]="user.email"
+                           >
+                        <span class="form-text text-danger" *ngIf="emailValido()">Debe digitar el correo correctamente</span>
+                    
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Contraseña</label>
+                <div class="col-sm-9">
+                    <input type="password"
+                           class="form-control"
+                           ngModel
+                           name="password"
+                           placeholder="Digite la Contraseña"
+                           [(ngModel)]="user.password"
+                           required
+                           minlength="7">
+                    <span class="form-text text-danger" *ngIf="digitarContrasena()">Debe digitar la contraseña</span>                    
+                </div>
+                
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Confirmar Contraseña</label>
+                <div class="col-sm-9">
+                    <input type="password"
+                           class="form-control"
+                           ngModel
+                           name="password_confirmation"
+                           placeholder="Digite la Confirmarmacion de Contraseña"
+                           [(ngModel)]="user.password_confirmation"
+                           required
+                           minlength="7">
+                    <span class="form-text text-danger" *ngIf="contrasenaValida()">Debe digitar la contraseña</span>                    
+                    <span class="form-text text-danger" *ngIf="coincideContrasena()">La contraseña no coincide</span>                    
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col">
+                    <a mat-raised-button color="warn"  class="float-end" routerLink="../login">Cancelar</a>
+                    <button type="submit" class="btn btn-primary float-end" [disabled]="miFormulario.invalid">guardar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">Cargando...</p>
+</ngx-spinner>

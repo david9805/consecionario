@@ -1,0 +1,92 @@
+<h2>Registrar</h2>
+<hr>
+<div class="row">
+    <div class="col">
+        <form (ngSubmit)="guardar()" #miFormulario="ngForm" autocomplete="off">
+           <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Marca Vehiculo</label>
+                <div class="col-sm-9">
+                    <input type="text"
+                           class="form-control"
+                           ngModel
+                           name="marcaVehiculo"
+                           placeholder="Digite la marca del Vehiculo"
+                           required
+                           [(ngModel)]="vehiculo.marcaVehiculo"
+                           >
+                    <span class="form-text text-danger" *ngIf="marcaValido()">Debe Digitar una marca</span>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Modelo Vehiculo</label>
+                <div class="col-sm-9">
+                    <input type="text"
+                           class="form-control"
+                           ngModel
+                           placeholder="Digite el modelo del Vehiculo"
+                           required
+                           name="modeloVehiculo"
+                           [(ngModel)]="vehiculo.modeloVehiculo"
+                           >
+                        <span class="form-text text-danger" *ngIf="modeloValido()">Debe digitar el modelo</span>
+                    
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Precio</label>
+                <div class="col-sm-9">
+                    <input type="number"
+                           class="form-control"
+                           ngModel
+                           name="precioVehiculo"
+                           [(ngModel)]="vehiculo.precioVehiculo  "
+                           required
+                           minlength="7">
+                    <span class="form-text text-danger" *ngIf="precioValido()">Debe digitar el precio</span>                    
+                </div>
+                
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Tipo Vehiculo</label>
+                <div class="col-sm-6">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Tipo Vehiculo</mat-label>
+                        <mat-select [(ngModel)]="vehiculo.idtipoVehiculo" name="food">
+                          <mat-option *ngFor="let tipovehiculo of tipoVehiculo" [value]="tipovehiculo.id">
+                            {{tipovehiculo.tipoVehiculo}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>                       
+                </div>
+                
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Foto Url</label>
+                    <div class="col-sm-9">
+                        <input type="text"
+                               class="form-control"
+                               ngModel
+                               placeholder="Pegue la URL  de la imagen"
+                               required
+                               name="imagenVehiculo"
+                               [(ngModel)]="vehiculo.imagenVehiculo"
+                               >
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary float-end" [disabled]="miFormulario.invalid">guardar</button>
+                    <a mat-raised-button color="warn" (click)="borrarVehiculo()"><mat-icon>delete</mat-icon></a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">Cargando...</p>
+</ngx-spinner>

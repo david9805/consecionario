@@ -1,0 +1,23 @@
+<mat-card >
+    <mat-card-header>
+        <mat-card-title>{{vehiculo.marcaVehiculo}}</mat-card-title>
+        <mat-card-subtitle>{{vehiculo.modeloVehiculo}}</mat-card-subtitle>
+    </mat-card-header>
+
+
+    
+
+    <mat-card-content>
+        <img mat-card-image [src]="vehiculo.imagenVehiculo"  >
+        <h3>{{vehiculo.marcaVehiculo}}</h3>
+        <p>
+            <strong>Precio:</strong> {{vehiculo.precioVehiculo | currency:'CAD':'symbol-narrow':'1.0-4'}}
+            <br>
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button color="accent" [routerLink]="['/vehiculo/editar',vehiculo.id]">
+            Editar
+    </button>
+    </mat-card-actions>
+</mat-card>
